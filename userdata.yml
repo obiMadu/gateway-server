@@ -1,0 +1,12 @@
+#cloud-config
+ssh_pwauth: false
+
+users:
+  - name: ansible
+    gecos: Ansible User
+    groups: users,admin,wheel
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    shell: /bin/bash
+    lock_passwd: true
+    ssh_authorized_keys:
+      - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDEEb4PnrlvA9lUAGsP7XpWhUzGssP0sstSTcdoUYHypj9/3LXKgyrfCOPTRvCYoaanauj24uTQSoa3t7uoqEQRHPBMqpA67wHjmxo/wPx/XDaS/cOyhfle/3i895KucIiFEBWRMyfxS5QNh1udl/jWalPDkqFDwdm5p/ILPdEycdjTggl/0729yjs6q2gYZSGdLoCs03VYVPNpJQovmeIY5boDWza9TS9eFHkz4nPR5IgdOU0eGGWJMbT3izM1FQ79RqwKT2CHGP0NIjbPJLJoONLSpmuA0sLecVigUGLcKczbVtathiEsF/Mvb6ROz7uZUi+2ZyU9pSHDCBj6I88Zzg901qd8GLKPAnPb/xRDK7J+NhGSG4ilzIx9SaVM/kCTnudMnKCnoHWsfuki5xgm/XWKKO0VnXvJ8A6R6rHuBoIxfC0K+RhWQ5uB/bEcWOIKXpdM3+DVx5ujUVCFRFeGu1JPfJhcCFSwLUv1bsr8GYq7h5gtGTNt6J/9aRVomx0="
