@@ -1,0 +1,50 @@
+name: Prod
+
+on:
+    push:
+        branches: [nil]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    # environment: production
+      
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true  # Fetch submodules (true OR recursive)
+          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        # with:
+        #   terraform_version: ""
+
+      - name: Setup Ansible
+        run: pip install ansible
+
+      - name: Terraform Init
+        id: init
+        working-directory: ./deploy
+        run: terraform init
+
+      - name: Terraform Validate
+        id: validate
+        working-directory: ./deploy
+        run: terraform validate -no-color
+        
+      - name: Terraform Apply
+        id: apply
+        working-directory: ./deploy
+        run: terraform apply -auto-approve
+
+      - name: Generate Inventory
+        run: |
+              bash genInventory.sh
+
+      - name: Run playbook
+        uses: dawidd6/action-ansible-playbook@v2
+        with:
+          playbook: deploy.yml
+          directory: ./config
+          key: ${{secrets.SSH_PRIVATE_KEY}}
