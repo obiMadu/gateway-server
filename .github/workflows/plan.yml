@@ -4,6 +4,9 @@ on:
     pull_request: 
         branches: [stage]
 
+env:
+  TF_VAR_do_token: ${{ secrets.do_token }}
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
