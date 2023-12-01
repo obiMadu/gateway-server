@@ -28,7 +28,7 @@ jobs:
         run:  |
               sudo echo ${{ secrets.GCS_KEY }} > ${{ vars.GOOGLE_APPLICATION_CREDENTIALS }}
               echo ${{ secrets.GCS_KEY }}
-              echo ${{ vars.GOOGLE_APPLICATION_CREDENTIALS }}
+              echo $GOOGLE_APPLICATION_CREDENTIALS
 
       - name: Terraform fmt
         id: fmt
