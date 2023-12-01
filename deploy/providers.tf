@@ -5,6 +5,10 @@ terraform {
       version = "~> 2.0"
     }
   }
+  backend "gcs" {
+    bucket = "lsdkfk-gateway-server-do-prod"
+    prefix = "terraform/state"
+  }
 }
 
 # Configure the DigitalOcean Provider
