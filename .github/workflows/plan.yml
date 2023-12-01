@@ -2,7 +2,7 @@ name: Plan
 
 on:
     pull_request: 
-        branches: [staging]
+        branches: [stage]
 
 env:
   TF_VAR_do_token: ${{ secrets.do_token }}
@@ -29,21 +29,24 @@ jobs:
 
       - name: Terraform fmt
         id: fmt
+        working-directory: ./deploy
         run: terraform fmt -check
         continue-on-error: true
 
       - name: Terraform Init
         id: init
+        working-directory: ./deploy
         run: terraform init
 
       - name: Terraform Validate
         id: validate
+        working-directory: ./deploy
         run: terraform validate -no-color
-
-      - name: Terraform Plan
-        id: plan
-        run: terraform plan 
-        continue-on-error: true
+        
+      - name: Terraform Apply
+        id: apply
+        working-directory: ./deploy
+        run: terraform apply -auto-approve
       
       - name: Comment plan on PR
         uses: actions/github-script@v6
