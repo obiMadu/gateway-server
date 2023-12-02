@@ -7,12 +7,13 @@ on:
 env:
   TF_VAR_do_token: ${{ secrets.do_token }}
   GOOGLE_APPLICATION_CREDENTIALS: ${{ vars.GOOGLE_APPLICATION_CREDENTIALS }}
-  GCS_KEY: ${{ vars.GCS_KEY }}
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     # environment: production
+    permissions: 
+      issues: write
       
     steps:
       - uses: actions/checkout@v2
@@ -36,7 +37,7 @@ jobs:
         id: init
         working-directory: ./deploy
         run: |
-              echo $GCS_KEY > ${{ vars.GOOGLE_APPLICATION_CREDENTIALS }}
+              echo '${{ secrets.GCS_KEY }}' > ${{ vars.GOOGLE_APPLICATION_CREDENTIALS }}
               terraform init
 
       - name: Terraform Validate
