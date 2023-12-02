@@ -25,9 +25,6 @@ jobs:
           # terraform_version: ""
           terraform_wrapper: true
 
-      - name: Setup Backend Credentials
-        run: echo ${{ secrets.GCS_KEY }} > ${{ vars.GOOGLE_APPLICATION_CREDENTIALS }}
-
       - name: Terraform fmt
         id: fmt
         working-directory: ./deploy
@@ -37,7 +34,9 @@ jobs:
       - name: Terraform Init
         id: init
         working-directory: ./deploy
-        run: terraform init
+        run: |
+              echo ${{ secrets.GCS_KEY }} > ${{ vars.GOOGLE_APPLICATION_CREDENTIALS }}
+              terraform init
 
       - name: Terraform Validate
         id: validate
