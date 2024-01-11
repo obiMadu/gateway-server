@@ -7,7 +7,7 @@ resource "digitalocean_vpc" "gate_vpc" {
 
 #create gate droplet
 resource "digitalocean_droplet" "gate" {
-  name     = "gate2"
+  name     = "gate"
   size     = "s-1vcpu-1gb"
   image    = "ubuntu-22-04-x64"
   region   = var.do_region
