@@ -1,6 +1,7 @@
 #!/bin/bash
 
 filename="../inventory"  # Replace with the actual filename
+cat $filename
 
 # Using 'cat' and checking for empty output:
 if [ -z "$(cat "$filename")" ]; 
