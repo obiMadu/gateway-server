@@ -55,7 +55,7 @@ jobs:
 
       - name: Generate Ansible config
         working-directory: ./config
-        run: bash genInventory.sh
+        run: python3 genInventory.py
 
       - name: Ansible dry run
         id: ansible
