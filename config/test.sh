@@ -2,9 +2,7 @@
 
 filename="../inventory"  # Replace with the actual filename
 
-cat $filename
-
-# Using 'wc' and checking for empty output:
+# Using 'cat' and checking for empty output:
 if [ -z "$(cat "$filename" | tr -d '[:space:]')" ]; then
   echo "out=$(echo 'Nothing in the Inventory.')" >> "$GITHUB_OUTPUT"; 
 else
