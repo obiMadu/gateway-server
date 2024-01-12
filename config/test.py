@@ -16,5 +16,5 @@ with open(filename, "r") as file:
 
 # Append output to GITHUB_OUTPUT environment variable
 # os.environ["GITHUB_OUTPUT"] += f"out=({output})"
-print(output)
+print( "Ansible Log Output: /n" + output)
 # subprocess.run(["echo", "out=$(cat out.log)", ">>", "$GITHUB_OUTPUT"], check=True)
