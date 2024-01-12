@@ -15,5 +15,5 @@ with open(filename, "r") as file:
             output = logfile.read()
 
 # Append output to GITHUB_OUTPUT environment variable
-# os.environ["GITHUB_OUTPUT"] += f"out=({output})"
-subprocess.run(["echo", "\"out=$(cat out.log)\"", ">>", "\"$GITHUB_OUTPUT\""], check=True)
+os.environ["GITHUB_OUTPUT"] += f"out=({output})"
+# subprocess.run(["echo", "\"out=$(cat out.log)\"", ">>", "\"$GITHUB_OUTPUT\""], check=True)
