@@ -6,6 +6,7 @@ filename = "../inventory"  # Replace with the actual filename
 # Check if the file is empty after removing whitespace and control characters:
 with open(filename, "r") as file:
     content = file.read()
+    print("Inventory file content: " + content)
     if not content.strip():  # Remove whitespace and check if empty
         output = "Nothing in the Inventory."
     else:
