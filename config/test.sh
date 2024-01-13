@@ -1,6 +1,6 @@
 #!/bin/bash
 
-filename="../inventory"  # Replace with the actual filename
+filename="./inventory"  # Replace with the actual filename
 
 regex_pattern="^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$"  # Example regex for IPv4 address
 

@@ -2,7 +2,7 @@ import os
 import subprocess
 import re
 
-filename = "../inventory"  # Replace with the actual filename
+filename = "./inventory"  # Replace with the actual filename
 
 # Check if the file is empty after removing whitespace and control characters:
 with open(filename, "r") as file:
