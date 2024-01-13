@@ -12,5 +12,5 @@ except subprocess.CalledProcessError as error:
     exit(1)  # Exit with error code
 
 # Write gate_ip to the inventory file
-with open("../inventory", "w") as file:
+with open("../config/inventory", "w") as file:
     file.write(gate_ip)
