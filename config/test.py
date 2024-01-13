@@ -17,4 +17,4 @@ with open(filename, "r") as file:
         output = "No valid target in the Inventory."        
 
 # Append output to GITHUB_OUTPUT environment variable
-os.environ["GITHUB_OUTPUT"] += f"out={output}"
+os.environ["GITHUB_OUTPUT"] += f"out={str({output})}"
