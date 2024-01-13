@@ -7,7 +7,7 @@ filename = "../inventory"  # Replace with the actual filename
 with open(filename, "r") as file:
     content = file.read()
     print("Inventory file content: " + content)
-    if not content.strip():  # Remove whitespace and check if empty
+    if ( content == "" ):  # Check if content is empty
         output = "Nothing in the Inventory."
     else:
         # Run Ansible command and capture output
