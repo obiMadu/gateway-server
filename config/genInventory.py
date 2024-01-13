@@ -6,7 +6,7 @@ os.chdir("../deploy")
 
 # Execute Terraform command and capture output
 try:
-    gate_ip = subprocess.check_output(["terraform", "output", "--raw", "gate_ip"], check=True, text=True).strip()
+    gate_ip = subprocess.check_output(["terraform", "output", "--raw", "gate_ip"], text=True).strip()
 except subprocess.CalledProcessError as error:
     print(f"Error executing Terraform command: {error}")
     exit(1)  # Exit with error code
