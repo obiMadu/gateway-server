@@ -18,4 +18,3 @@ with open(filename, "r") as file:
 
 # Append output to GITHUB_OUTPUT environment variable
 os.environ["GITHUB_OUTPUT"] += f"out={output}"
-print( "Ansible Log Output: " + output)
