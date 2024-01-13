@@ -14,4 +14,3 @@ except subprocess.CalledProcessError as error:
 # Write gate_ip to the inventory file
 with open("../inventory", "w") as file:
     file.write(gate_ip)
-    print("Inventory Contents: " + gate_ip)
