@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 filename="../inventory"  # Replace with the actual filename
 
