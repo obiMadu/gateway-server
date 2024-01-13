@@ -6,7 +6,7 @@ filename = "../inventory"  # Replace with the actual filename
 # Check if the file is empty after removing whitespace and control characters:
 with open(filename, "r") as file:
     content = file.read()
-    print("Inventory file content: " + content)
+    print("Inventory file content: " + "'" + content + "'")
     if ( content == " " ):  # Check if content is empty
         output = "Nothing in the Inventory."
     else:
