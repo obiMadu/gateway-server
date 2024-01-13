@@ -14,9 +14,9 @@ with open(filename, "r") as file:
         with open("out.log", "r") as logfile:
             output = logfile.read()
     else:
-        output = "Nothing in the Inventory."        
+        output = "No valid target in the Inventory."        
 
 # Append output to GITHUB_OUTPUT environment variable
-# os.environ["GITHUB_OUTPUT"] += f"out=({output})"
-print( "Ansible Log Output: /n" + output)
+os.environ["GITHUB_OUTPUT"] += f"out=({output})"
+print( "Ansible Log Output: " + output)
 # subprocess.run(["echo", "out=$(cat out.log)", ">>", "$GITHUB_OUTPUT"], check=True)
