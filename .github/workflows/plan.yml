@@ -2,7 +2,7 @@ name: Plan
 
 on:
     pull_request: 
-        branches: [plan]
+        branches: [main]
 
 env:
   TF_VAR_do_token: ${{ secrets.do_token }}
