@@ -69,8 +69,6 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-                Terraform Results
-
                 // 1. Retrieve existing bot comments for the PR
                 const { data: comments } = await github.rest.issues.listComments({
                 owner: context.repo.owner,
@@ -82,7 +80,8 @@ jobs:
                 })
 
                 // 2. Prepare format of the comment
-                const output = `#### Terraform Format and Style 🖌\`${{ steps.fmt.outcome }}\`
+                const output = ` ## Terraform Results
+                #### Terraform Format and Style 🖌\`${{ steps.fmt.outcome }}\`
                 #### Terraform Initialization ⚙️\`${{ steps.init.outcome }}\`
                 #### Terraform Validation 🤖\`${{ steps.validate.outcome }}\`
                 <details><summary>Validation Output</summary>
