@@ -60,7 +60,7 @@ jobs:
       - name: Ansible dry run
         id: ansible
         working-directory: ./config
-        run: ./test.sh
+        run: python3 test.py
       
       - name: Comment plan on PR
         uses: actions/github-script@v6
