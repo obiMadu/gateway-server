@@ -17,6 +17,6 @@ with open(filename, "r") as file:
         output = "No valid target in the Inventory."        
 
 # Append output to GITHUB_OUTPUT environment variable
-os.environ["GITHUB_OUTPUT"] += f"out={output}"
+# os.environ["GITHUB_OUTPUT"] += f"out={output}"
 print( "Ansible Log Output: " + output)
-# subprocess.run(["echo", "out=$(cat out.log)", ">>", "$GITHUB_OUTPUT"], check=True)
+subprocess.run(["echo \"out=$(cat out.log)\" >> \"$GITHUB_OUTPUT\""], check=True)
