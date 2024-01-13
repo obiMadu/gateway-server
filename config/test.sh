@@ -2,10 +2,11 @@
 
 filename="../inventory"  # Replace with the actual filename
 
-# Using 'cat' and checking for empty output:
-if [ -z "$(cat "$filename" | tr -d '[:space:]\033\015\012')" ]; then
-  echo "out=$(echo 'Nothing in the Inventory.')" >> "$GITHUB_OUTPUT"; 
-else
+regex_pattern="^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$"  # Example regex for IPv4 address
+
+if [[ "$(cat "$filename")" =~ $regex_pattern ]]; then
     ansible all -m ping --check;
-    echo "out=$(cat out.log)" >> "$GITHUB_OUTPUT";
+    echo "out=$(cat out.log)" >> $GITHUB_OUTPUT;
+else
+    echo "out=$(echo 'Nothing in the Inventory.')" >> $GITHUB_OUTPUT; 
 fi
