@@ -7,7 +7,6 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    # environment: production
       
     steps:
       - uses: actions/checkout@v2
@@ -37,13 +36,13 @@ jobs:
           TF_VAR_do_token: ${{ secrets.DO_TOKEN }}
         run: terraform apply -auto-approve
 
-      - name: Generate Inventory
-        run: |
-              bash genInventory.sh
+      - name: Generate Ansible Inventory
+        working-directory: ./config
+        run: ./genInventory.sh
 
       - name: Run playbook
         uses: dawidd6/action-ansible-playbook@v2
         with:
-          playbook: deploy.yml
           directory: ./config
+          playbook: deploy.yml
           key: ${{secrets.SSH_PRIVATE_KEY}}
