@@ -9,12 +9,12 @@
   roles:
     - docker
 
-- hosts: server
-  become: true
-  roles:
-    - portainer
+# - hosts: server
+#   become: true
+#   roles:
+#     - portainer
 
-- hosts: server
-  become: true
-  roles:
-    - nginxproxyman
+# - hosts: server
+#   become: true
+#   roles:
+#     - nginxproxyman
