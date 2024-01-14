@@ -3,3 +3,18 @@
   tasks:
     - name: Ping hosts
       ansible.builtin.ping:
+
+- hosts: server
+  become: true
+  roles:
+    - docker
+
+- hosts: server
+  become: true
+  roles:
+    - portainer
+
+- hosts: server
+  become: true
+  roles:
+    - nginxproxyman
