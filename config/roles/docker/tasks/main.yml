@@ -25,3 +25,8 @@
       - containerd.io 
       - docker-buildx-plugin 
       - docker-compose-plugin
+
+- name: enable docker
+  ansible.builtin.service:
+    name: docker
+    enabled: true
