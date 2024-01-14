@@ -1,0 +1,27 @@
+- name: update apt
+  ansible.builtin.apt:
+    state: latest
+    update_cache: true
+    pkg:
+      - ca-certificates 
+      - curl 
+      - gnupg
+
+- name: get gpg keyring
+  ansible.builtin.shell:
+    cmd: install -m 0755 -d /etc/apt/keyrings && curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+
+- name: install gpg keyring
+  ansible.builtin.shell:
+    cmd: echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+- name: install docker
+  ansible.builtin.apt:
+    update_cache: true
+    state: latest
+    pkg:
+      - docker-ce 
+      - docker-ce-cli 
+      - containerd.io 
+      - docker-buildx-plugin 
+      - docker-compose-plugin
